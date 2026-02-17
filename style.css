@@ -76,3 +76,6 @@
   font-weight: 400;
   font-style: normal;
 }
+
+/* Vedio Section */
+@apply bg-pink-100 hover:bg-pink-200 text-gray-800 font-semibold py-3 rounded-xl transition duration-200;

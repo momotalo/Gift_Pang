@@ -146,5 +146,54 @@ document.getElementById("imageModal").onclick = function () {
     }, 500);
 };
 
-
 render();
+
+// Password Section
+let input = "";
+const correctPassword = "1901";
+
+function updateDisplay() {
+    let masked = "*".repeat(input.length);
+    document.getElementById("display").innerText =
+        masked + "-".repeat(4 - input.length);
+}
+
+function press(num) {
+    if (input.length < 4) {
+        input += num;
+        updateDisplay();
+
+        if (input.length === 4) {
+            checkPassword();
+        }
+    }
+}
+
+function clearOne() {
+    input = input.slice(0, -1);
+    updateDisplay();
+}
+
+function clearAll() {
+    input = "";
+    updateDisplay();
+}
+
+function checkPassword() {
+    if (input === correctPassword) {
+        const loading = document.getElementById("loading");
+        loading.classList.remove("hidden");
+        loading.classList.add("flex");
+
+        setTimeout(() => {
+            window.location.href = "video.html";
+        }, 1500);
+
+    } else {
+        setTimeout(() => {
+            alert("Wrong password 💔");
+            input = "";
+            updateDisplay();
+        }, 300);
+    }
+}
